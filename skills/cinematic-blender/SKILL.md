@@ -1,62 +1,62 @@
 ---
 name: cinematic-blender
-description: blender-mcp使用说明书。用于创建、改造或提升 Blender 场景、镜头、动画、灯光、材质与模型。
+description: Operating guide for blender-mcp. Use it to create, rework, or improve Blender scenes, cinematography, animation, lighting, materials, and models.
 ---
 
 # Cinematic Blender
 
-## 核心原则
+## Core principles
 
-- 质量优先：比起构建的速度，你应该更关注画面或模型的质量，产生大师级、工业级作品。尽量不要用简单几何体（球，立方）的组合来堆砌场景。
+- Prioritize quality: Favor the quality of the imagery or model over build speed. Produce masterful, production-grade work. Avoid assembling scenes from combinations of simple primitives such as spheres and cubes.
 
-- 空间填充：除非用户只要求完成一个“模型体”或者明确要求留白，否则你必须确保画面（场景或动画）几乎没有地方是空的，尽量被实体，材质，背景等素材资源充满。不要吝啬电脑性能。
+- Fill the frame: Unless the user requests only a self-contained model or explicitly asks for negative space, ensure that almost none of the scene or animation frame feels unintentionally empty. Fill it with geometry, materials, backgrounds, and other assets. Do not be overly conservative with computing resources.
 
-- 调动视觉功能验证：作为一个VLM，你不仅需要在代码和组件级别对作品做验证，还需要调动你的视觉能力去验证场景是否构建完整，确保想要表达的物体在视野显眼处，颜色协调。blender-mcp中提供了场景截图工具。
+- Validate visually: As a VLM, validate the work not only at the code and component levels but also with your visual capabilities. Confirm that the scene is complete, the intended subject is prominent in the frame, and the colors are harmonious. blender-mcp provides a scene screenshot tool for this purpose.
 
-- 设计完成再工作：你需要明确
-    1. 作品风格(design style)
-    2. 场景布局
-    3. 镜头设计(camera design)
-    4. 灯光设计(light design)
-    5. 材质设计(material design)
-  然后再进入 Blender 进行建模。如果用户给出这些部分，你直接用即可；如果没给出，你需要先设计好这些部分，或者调用提问工具向用户提问对齐需求。
+- Finish the design before building: Define the following first:
+    1. Visual style
+    2. Scene layout
+    3. Camera design
+    4. Lighting design
+    5. Material design
+  Only then begin modeling in Blender. If the user provides these specifications, use them directly. Otherwise, design them first or use a question tool to align with the user's requirements.
 
-## Raw workflow
+## Workflow
 
-### 1. 用生图功能做参考
+### 1. Generate visual references
 
-Diffusion模型比起VLM更擅长生成令人类接受的视觉参考图。
-如果你手边有图片生成工具可以用（比如GPT Image 2工具），你可以先把需求告诉它，用它来生成参考图，帮助你更好地设计场景布局，光影，材质和风格。
+Diffusion models are generally better than VLMs at generating visual references that people find convincing.
+If an image-generation tool is available, such as GPT Image 2, give it the requirements and generate reference images first. Use them to make better decisions about scene composition, lighting, materials, and style.
 
-### 2. 搜索再建模
+### 2. Research before modeling
 
-- 设计时先调用搜索工具了解真实的目标物体的样式、结构、材质参考。
+- Before designing, use search tools to study the real-world appearance, structure, and materials of the target object.
 
-- 动手前，先去BlenderKit、Poly Haven、Sketchfab搜索可用的公共模型、材质、纹理、HDRI、贴花、动画和 Geometry Nodes 资源。
+- Before building, search BlenderKit, Poly Haven, and Sketchfab for usable public models, materials, textures, HDRIs, decals, animations, and Geometry Nodes resources.
 
-### 3. 逐个创建资产
+### 3. Create assets one at a time
 
-对于需要但是没有搜索下载到的资产，你需要亲自创建。
-禁止一次性创建所有资产。你需要逐个创建资产，确保每个资产都符合设计要求。
-如果你的harness允许你使用多agent，慷慨地派遣子agents.
+Create any required assets that you could not find and download.
+Never create all assets in a single pass. Build them one at a time and ensure that each asset meets the design requirements.
+If your harness supports multiple agents, delegate generously to subagents.
 
-没完成一批资产就做渲染检查，不通过返回修改。
+Render and inspect each completed batch of assets. Revise anything that fails review.
 
-### 4. 实现
+### 4. Implement the design
 
-你需要在Blender中实现设计好的场景布局、镜头设计、灯光设计和材质设计.
+Implement the planned scene layout, camera design, lighting design, and material design in Blender.
 
-要完成大师级别的作品，不要吝啬Token和用户电脑性能。不要过度追求极简和渲染速度。
+To produce masterful work, do not be overly conservative with tokens or the user's computing resources. Do not over-optimize for minimalism or rendering speed.
 
-### 5. 渲染检查和交付
+### 5. Inspect renders and deliver
 
-你需要抽取多幅场景截图，检查是否符合设计要求。
-如果不符合要求，返回修改。
+Capture multiple screenshots of the scene and verify that they meet the design requirements.
+If they do not, return to the scene and revise it.
 
-检查通过后，输出抽取到的所有截图给用户。渲染成片需要大量时间，用户如果没有明确提出，就暂时不渲染成片。
+After the work passes inspection, show the user every captured screenshot. A final production render takes substantial time, so do not produce one unless the user explicitly requests it.
 
-## Slops
+## Anti-patterns
 
-- 你需要先清除默认材质、默认灯光和未经设计的默认状态(如果有的话)。
+- First remove any default materials, default lights, and other undesigned default settings or objects.
 
-- 如果用户要求创建一个动画，你需要把视频中的运动部分充满整个时间轴。避免出现“静滞好久才出现下一个动态”的情况。
+- If the user requests an animation, distribute motion throughout the entire timeline. Avoid long periods of stillness before the next movement.
