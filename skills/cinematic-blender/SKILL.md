@@ -9,13 +9,13 @@ description: Operating guide for blender-mcp. Use it to create, rework, or impro
 
 - Prioritize quality: Favor the quality of the imagery or model over build speed. Produce masterful, production-grade work. Avoid assembling scenes from combinations of simple primitives such as spheres and cubes.
 
-- Fill the frame: Unless the user requests only a self-contained model or explicitly asks for negative space, ensure that almost none of the scene or animation frame feels unintentionally empty. Fill it with geometry, materials, backgrounds, and other assets. Do not be overly conservative with computing resources.
+- Build the full scene: Unless the user explicitly requests an isolated model or deliberate negative space, design every camera-visible area, including the horizon, sky or enclosure, and distant backdrop. Fill it with geometry, materials, backgrounds, and other assets. Do not be overly conservative with computing resources.
 
-- Validate visually: As a VLM, validate the work not only at the code and component levels but also with your visual capabilities. Confirm that the scene is complete, the intended subject is prominent in the frame, and the colors are harmonious. blender-mcp provides a scene screenshot tool for this purpose.
+- Validate visually: Do not rely only on code or component checks. Use blender-mcp screenshots to inspect the entire frame; reject large black or featureless areas unless intentional, and confirm that the subject, backdrop, lighting, and colors form a coherent composition.
 
 - Finish the design before building: Define the following first:
     1. Visual style
-    2. Scene layout
+    2. Scene layout, including foreground, midground, and backdrop
     3. Camera design
     4. Lighting design
     5. Material design
@@ -57,6 +57,8 @@ After the work passes inspection, show the user every captured screenshot. A fin
 
 ## Anti-patterns
 
-- First remove any default materials, default lights, and other undesigned default settings or objects.
+- First remove any default materials, lights, and other undesigned defaults.
+
+- Do not use a flat World background, glow, fog, particles, or a light cone as a substitute for a finished backdrop.
 
 - If the user requests an animation, distribute motion throughout the entire timeline. Avoid long periods of stillness before the next movement.
