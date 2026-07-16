@@ -65,6 +65,6 @@ First, verify that blender-mcp is available. Then install the skill from https:/
 
 ## Contributions Welcome
 
-Contributions are welcome: improve the existing [`cinematic-blender` skill](skills/cinematic-blender/SKILL.md), or add other skills under [`skills/`](skills/).
+Contributions are welcome: improve the existing skill, or add other skills under [`skills/`](skills/).
 
 Keep skills short, but make their impact huge!

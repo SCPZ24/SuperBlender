@@ -64,6 +64,6 @@ First, verify that blender-mcp is available. Then install the skill from https:/
 
 ## 欢迎贡献
 
-欢迎参与贡献：你可以改进现有的[`cinematic-blender` Skill](skills/cinematic-blender/SKILL.md)，也可以在[`skills/`](skills/)下新增其他Skill。
+欢迎参与贡献：你可以改进现有的skill，也可以在[`skills/`](skills/)下新增其他Skill。
 
 保持skill简短但是效果巨大的理念！
