@@ -62,3 +62,5 @@ After the work passes inspection, show the user every captured screenshot. A fin
 - Do not use a flat World background, glow, fog, particles, or a light cone as a substitute for a finished backdrop.
 
 - If the user requests an animation, distribute motion throughout the entire timeline. Avoid long periods of stillness before the next movement.
+
+- For animations, account for how moving objects affect the surrounding scene. For example, an explosion's shockwave should push nearby objects outward and shake the camera; a fast-moving object should generate airflow that makes nearby lightweight objects sway.
